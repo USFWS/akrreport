@@ -1,4 +1,4 @@
-#' Convert R Markdown to a Microsoft Word document
+#' Convert R Markdown to a MS Word document
 #'
 #' This function serves as wrapper for \code{\link[bookdown]{word_document2}}, with a
 #' custom Pandoc Word template and different knitr default values (e.g., \code{number_sections = FALSE}).
