@@ -1,0 +1,124 @@
+--- 
+report-subject: "YOUR PROJECT NAME HERE"
+author: "`r Sys.Date()`" # Put date of report in "author" position for better spacing
+bibliography: sample.bib # Rename/delete/modify/replace this as necessary
+link-citations: yes      # Should inline references link to bibliography
+urlcolor: blue
+citecolor: Maroon
+linkcolor: ForestGreen
+lof: yes                 # Print list of figures
+lot: yes                 # Print list of tables?
+fontsize: 11pt           # Valid options are 10pt, 11pt, or 12pt
+cover-image: images/sample-cover-photo.jpg
+output:
+  akrreport::project_report:
+    keep_tex: no         
+    dev: "cairo_pdf"
+---
+
+
+```{r options, include = FALSE}
+options(tinytex.verbose = TRUE, rmarkdown.df_print = FALSE)
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, echo=FALSE, dpi = 300)
+
+# Load your packages here
+# The `pacman` package makes this easy. 
+# Install it if necessary with `install.packages("pacman")`
+pacman::p_load(knitr, kableExtra) # Add any others you need to this list...
+```
+
+# FIGURES AND TABLES
+
+You can generate figures two ways:
+
+Inside R using a code chunk...
+ 
+```{r ex-fig1, out.width="75%", fig.cap="I created this figure in R.", echo=TRUE}
+hist(rnbinom(10000, mu = 10, size = 2))
+```
+
+...or by referencing an image/photo files stored in the `images` directory. This again requires a named R chunk to help you with referencing the figure later...
+
+```{r ex-fig2, out.width = "50%", fig.cap="Look at these logos! Amazing!", echo=TRUE}
+knitr::include_graphics("images/usfws-refuges-logos.png")
+```
+
+Tables are always tricky, but it's generally best to use the `kable` function from the `knitr` package. We also recommend looking into the `kableExtra` package as well if you want more customization options; here's a [very helpful document](https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf). In any case, these will be created within R, again in a named R chunk for easy cross-referencing (see next section).
+
+```{r ex-table, echo = TRUE}
+df <- mtcars[1:5, 1:6]
+df <- mtcars[1:5, 1:6]
+tab <- knitr::kable(
+  df, 
+  caption = "This is a table produced with knitr::kable().",
+  longtable = TRUE,
+  booktabs = TRUE) 
+# (the last two options make the table a bit more readable)
+kable_styling(tab, full_width = TRUE, latex_options = "striped")
+```
+
+# CROSS-REFERENCES
+
+You can easily reference and link to figures and tables throughout the document. For example, to link to Figure 1, we simply use `\@ref(label)` where `label` is the R code chunk ID preceded by `fig:` for figures or `tab:` for tables. So for the logo picture above, the R code chunk was "ex-fig" meaning we can reference it via `\@ref(fig:ex-fig1)`. When displayed as text, it only uses the appropriate figure number (e.g., 1, 2, etc.), so you have to use "Fig." or "Figure" on your own... Here goes: see Figure \@ref(fig:ex-fig1) or Figure \@ref(fig:ex-fig2), whichever pleases you most. Table \@ref(tab:ex-table) is pretty exciting too, if you'll recall.
+
+# CITATIONS
+
+To cite an entry from your BibTex database, use `@key` or `[@key]` (the latter puts the citation in parentheses. For example `@RCoreTeam2018` is rendered as R Core Team (2018), and `[@Flint2013]` generates "(Flint 2013)". For completeness, @Flint2013 does not use R [@RCoreTeam2018] for his manuscript.
+
+# PROJECT SUMMARY
+
+Your Project Summary goes here! Test if url links are really added as footnotes: [USWFS](http://fws.gov)
+
+# CURRENT STATUS
+
+## Action Items
+
+## Timeline
+
+## Short-term Planning
+
+## Long-term Planning
+
+# PROBLEM DESCRIPTION
+
+# GOALS & OBJECTIVES
+
+# PLANNING, SAMPLE DESIGN, DECISIONS
+
+# MONITORING, PROTOCOLS
+
+# DATA MANAGEMENT & ANALYSIS
+
+# KEY UNCERTAINTIES
+
+# REPORT & COMMUNICATIONS
+
+# PEOPLE
+
+## Communications
+
+# ACTIVITY LOG
+
+```{r fixed-ref-placement-note, include=FALSE}
+# DO NOT EDIT THE FOLLOWING REFERENCES SECTION!
+# Except perhaps to change the section name as you like
+# And do not delete either the preceding '\FloatBarrier' or the following 
+# '<div id="refs"></div>' lines as they preserve the location of the literature
+# cited in the presence of appendices
+
+# You can, however, delete this code chunk 
+```
+
+# REFERENCES
+
+# (APPENDIX) Appendix {-}
+
+# Appendix A
+
+If you need them, you can include appendices too. If not, delete these sections...
+
+But here's one appendix as an example... 
+
+# Appendix B
+
+And here's another... just for good measure.

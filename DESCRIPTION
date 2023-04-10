@@ -1,0 +1,18 @@
+Package: akrreport
+Type: Package
+Title: Template for Alaska Refuge Reports
+Version: 0.1.0
+Authors@R: c(person("McCrea", "Cobb", email = "mccrea_cobb@fws.gov", role = c("aut", "cre")))
+Maintainer: McCrea Cobb <mccrea_cobb@fws.gov>
+Description: Provides a template for using R Markdown to generate MS Word and 
+    PDF reports in the format of the Alaska Refuge Report Series.
+Imports: utils, bookdown, rmarkdown, knitr
+License: CC0
+Copyright: This software is in the public domain because it contains materials
+    that originally came from the United States Fish & Wildlife Service, an agency
+    of the United States Department of Interior. For more information, see the
+    official US DOI copyright policy at https://www.doi.gov/copyright.  Note that the
+    use of the USFWS logo is restricted to official publications:
+    https://www.fws.gov/help/policies.html
+Encoding: UTF-8
+RoxygenNote: 7.2.3

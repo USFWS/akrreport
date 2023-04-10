@@ -1,0 +1,198 @@
+---
+title: 
+subtitle: 
+author: 
+date: 
+### Uncomment the following line if a summary should be shown after the title 
+# abstract: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr."
+
+### Comment or remove the following two lines if NO references are used
+bibliography: [bib/sample.bib, bib/packages.bib]  # Path to bibliography files 
+csl: bib/the-journal-of-wildlife-management.csl   # Path to reference style file
+
+### Settings for rendering the document:
+output: 
+  akrreport::word_doc:
+    toc: false
+    font: "Helvetica"
+---
+
+```{r setup, include = FALSE}
+# settings --> keep this chunk as it is!
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, 
+  warning = FALSE, error = FALSE, cache = TRUE,
+  fig.path='figs/', cache.path = 'cache/')
+```
+
+```{r load-packages, include = FALSE}
+# Load all your packages that you need later
+library(knitr)
+```
+
+```{r generate-package-refs, include=FALSE}
+# Automatically create a bib database for R packages used above
+knitr::write_bib(
+  x = c(.packages(), 'bookdown', 'rmarkdown', 'akrreport',
+    # Add here now all packages that are loaded above:
+    'knitr'), 
+  file = 'bib/packages.bib')
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+# Introduction 
+
+## YAML header
+
+Configure the YAML header including the following elements:
+
+- *title*: Title
+- *subtitle*: Subtitle; remove option completely, if you don't need a subtitle.
+- *author*: Character of single or multiple author(s)
+- *date*: A date
+- *abstract*: The abstract will be shown right after the title in smaller font size. 
+- *bibliography*: A path to the bibliography file to use for references (BibTeX *.bib* file). The current file includes 3 dummy references; either insert your references into this file or replace the file with your own.
+- *csl*: The style is provided in the 'sage-harvard.csl' file, which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style. Just leave the file as it is.
+- *output*: The nested fields for the output field are based on the arguments of the output function. Since *akrreport::word_doc* is based on *bookdown::word_document2*, see its help page for more options. Current default settings are
+    - *toc: FALSE*
+    - *toc_depth: 4*
+    - *number_sections: FALSE*
+    - *highlight:  "default"*
+    - *reference_docx: "akrreport-template"*
+    - *font = "Helvetica"*
+    - *dpi: 144*
+
+By default *akrreport::word_doc* uses a 'akrreport-template.docx' template file, which is based on standard template file for the Alaska Refuge Report Series except for the font type, which is by default 'Helvetica'.
+
+However, if you feel like using your own template or the standard Word template (i.e. the Normal.dot file), simply provide the path to your file or write "default" for the latter case (*reference_docx: "default"*). For further options see also the documentation of the *bookdown::word_document2* function, which is internally called. 
+
+
+## The bookdown package
+
+If you are new to working with [bookdown](https://bookdown.org/) or even to [rmarkdown](https://rmarkdown.rstudio.com/), please read over this documentation. To learn more about the *bookdown* and *rmarkdown* packages in general:
+
+- [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J. Allaire, and Garrett Grolemund
+- [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) by Yihui Xie
+
+
+# Methods
+
+## Cross-references
+
+External images and R figures can be referenced with '\@ref(fig:<label>)', where '<label>' is the name of the code chunk. These label names should **not contain underscores** to separate words, use hyphens here instead. Note that figures need to have a caption to be numbered and for cross-referencing, The caption is also set in the chunk option with 'fig.cap="Your caption"'.
+
+Cross-references to individual sections can simply be made by placing the name of the section into squared brackets, e.g. a link to the [Figures] is made via '[Figures]'.
+
+Tables require also a label and table caption for cross-referencing like figures. But here, the cross-reference contains a 'tab:' in '\@ref(tab:<name>)') instead of a 'fig:'. Also, captions of tables produced with R cannot be set in the chunk options as for figures but in the R functions directly (see examples in the [Results]).
+
+This is for example a cross-reference to table \@ref(tab:kable1) in the [Using the *knitr* package] chapter.
+
+
+## Mathematical equations
+
+Use mathematics as usual with the dollar sign `$` at the beginning and end of the equation; either in **inline mode** with one dollar sign such as $E = mc^2$ or in **display mode** with two dollar signs: $$E = mc^2$$
+
+Important to note: do not leave a space between the '$' and your mathematical notation.
+
+Alternatively, you can use LaTeX for more control and when equations are more complicated. LaTeX equations are also automatically numbered if you define a label within the equation environment, which is useful if you have many equations and want to cross-reference them. The equation label needs to be written with '\#eq:label' before the end of the equation (see eq. \@ref(eq:mean)):
+
+\begin{equation}
+  \bar{X} = \frac{\sum_{i=1}^n X_i}{n}
+  (\#eq:mean)
+\end{equation}
+
+Formulas and corresponding explanations should be integrated into the sentence and, thus, end with a comma or period. Here comes an example:
+
+If the random variable $Y$ follows a standard normal distribution, i.e. $Y \sim N(0,1)$, it's density function can be described with
+
+\begin{equation}
+  f_{Y}(y)=\varphi(y) \stackrel{\mathrm{def}}{=} \frac{1}{\sqrt{2 \pi}} \exp \left\{ -\frac{y^2}{2} \right\}, y \in \mathbb{R}.
+  (\#eq:density-norm)
+\end{equation}
+
+$\pi$ represents the circle number or Ludolph's number. The function
+
+\begin{equation}
+  F_{Y}(y)=\Phi(y) \stackrel{\mathrm{def}}{=} \int_{-\infty}^y \varphi(x) \,\mathrm{d}x, \quad y \in \mathbb{R}
+  (\#eq:dist-func)
+\end{equation}
+
+represents then the distribution function of \@ref(eq:density-norm).
+
+The numbering of equations, as in \@ref(eq:density-norm), should only be done if they are referred to in the rest of the text. Especially if there are many equations in a report, the use of LaTeX seems to make more sense.
+
+
+# Results
+
+## R output
+
+R output is typically shown in the monospace font (here an example with the `iris` dataset):
+```{r}
+summary(iris[,1:3])
+```
+
+
+## Tables
+
+If the output format is Word tables are generated best using R packages instead of R Markdown syntax. The following two sections demonstrate some useful packages.
+
+### Using the *knitr* package
+
+Table \@ref(tab:kable1) is an example of using *knitr::kable()* to generate the table. The function has an explicit argument named 'caption' where you can place your caption text.
+
+```{r kable1}
+df <- mtcars[1:5, 1:6]
+knitr::kable(
+  df, 
+  caption = "This is a table produced with knitr::kable().",
+  longtable = TRUE,
+  booktabs = TRUE) 
+# (the last two options make the table a bit more readable)
+```
+
+
+## Figures
+
+Figures can directly be produced with R and displayed here. Similar to external images, figure captions and labels are placed inside the chunk options for cross-referencing (see Fig. \@ref(fig:base-fig)).
+
+```{r base-fig, fig.cap = "Relationship between horsepower and fuel economy."}
+plot(mtcars$hp, mtcars$mpg,
+xlab = "Gross Horsepower",
+ylab = "Miles Per Gallon",
+pch = 19)
+abline(lm(mpg ~ hp, data = mtcars), col = "red")
+```
+
+Here for comparison a boxplot with a different image height (Fig. \@ref(fig:boxplot-fig)).
+
+```{r boxplot-fig, fig.cap = "Fuel differences between transmission types (0 = automatic, 1 = manual).", fig.height = 3}
+boxplot(mpg ~ am, mtcars)
+```
+
+Images are always displayed across the entire width in the Word document. Unfortunately, settings via the code chunk options 'fig.height' and 'out.width' do not currently work in Word! For external images adjust the width via the size of the image file itself. 
+
+
+# Adding citations and bibliography
+
+Link a `.bib` document via the YAML header, and the bibliography will be printed at the very end (as usual). The default bibliography style is provided in the `the-journal-of-wildlife-management.csl` file, which adopts the [Journal of Wildlife Management](https://www.nacwg.org/JWMguidelines2011.pdf) reference style.
+
+References can be cited directly within the document using the R Markdown equivalent of the LaTeX citation system `[@key]`, where key is the citation key in the first line of the entry in the .bib file. Example: [@Taylor1937]. To cite multiple entries, separate the keys by semicolons (e.g., [@Knupp1999; @Kamm2000].
+
+There is also the package [citr](https://github.com/crsh/citr). *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document. If you are using the reference manager [Zotero](https://www.zotero.org/) the add-in can access your reference database directly.
+
+## Software
+
+If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions. The code to create a separate bibliography file named 'packages.bib' with all package references has already been added at the beginning of this script (code chunk 'generate-package-refs').
+
+All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables, was generated using the packages 'bookdown' (version `r packageVersion("bookdown")`) [@R-bookdown], 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'UHHformats' (version `r packageVersion("akrreport")`) [@R-akrreport], and 'knitr' (version `r packageVersion("knitr")`) [@R-knitr]. 
+
+<!-- This will start a new page (LaTeX code) -->
+\newpage
+
+
+# References
+
+<!-- All references will be added here automatically. -->
