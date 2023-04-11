@@ -20,9 +20,8 @@
 #' }
 #' @export
 #'
-create_rmd_doc <- function(dirname = "new-doc", template = "html_simple") {
-  templates <- c("html_material", "html_simple", "pdf_report",
-                 "pdf_simple", "word_doc", "pdf_cheatsheet")
+create_rmd_doc <- function(dirname = "new-doc", template = "word_doc") {
+  templates <- c("pdf_doc","word_doc")
   template <- match.arg(template, templates)
   tmp_dir <- paste(dirname, "_tmp", sep = "")
   if (file.exists(dirname) || file.exists(tmp_dir)) {
@@ -37,7 +36,7 @@ create_rmd_doc <- function(dirname = "new-doc", template = "html_simple") {
     system.file(file.path("rmarkdown", "templates", template_dir, "skeleton"),
                 package = "akrreport"))
 
-  # Copy all single files and subfolders into new path
+  # Copy all files and subfolders from the skeleton folder into the new folder
   for (i in seq_along(list_of_files)) {
     file.copy(system.file(file.path("rmarkdown", "templates", template_dir, "skeleton", list_of_files[i]),
                           package = "akrreport"), file.path(tmp_dir), recursive = TRUE)

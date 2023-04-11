@@ -4,7 +4,7 @@
 \alias{create_rmd_doc}
 \title{Create a new directory with the R Markdown template}
 \usage{
-create_rmd_doc(dirname = "new-doc", template = "html_simple")
+create_rmd_doc(dirname = "new-doc", template = "word_doc")
 }
 \arguments{
 \item{dirname}{Name of the directory to create.}

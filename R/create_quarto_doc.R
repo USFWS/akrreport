@@ -11,21 +11,16 @@
 #'
 #' @examples
 #' \dontrun{
-#'  # Create template for HTML document
-#'  create_quarto_doc(dirname = "my_html_doc", template = "html")
-#'  # Create template for simple PDF document using the default font 'Helvetica'
-#'  create_quarto_doc(dirname = "my_pdf_doc", template = "pdf_simple")
+#'  # Create template for Word document
+#'  create_quarto_doc(dirname = "my_word_report", template = "word_doc")
+#'  # Create template for a PDF document
+#'  create_quarto_doc(dirname = "my_pdf_report", template = "pdf_doc")
 #' }
 #' @export
 
-create_quarto_doc <- function(dirname = "new-doc", template = "html",
-                              font = "Helvetica") {
+create_quarto_doc <- function(dirname = "new-doc", template = "word_doc") {
 
-  if (!font %in% c("Helvetica", "other")) {
-    stop('Set the font option to "Helvetica".')
-  }
-
-  templates <- c("html", "pdf_simple", "pdf_report", "word")
+  templates <- c("pdf_doc", "word_doc")
   template <- match.arg(template, templates)
   tmp_dir <- paste(dirname, "_tmp", sep = "")
   if (file.exists(dirname) || file.exists(tmp_dir)) {
@@ -40,24 +35,10 @@ create_quarto_doc <- function(dirname = "new-doc", template = "html",
     system.file(file.path("quarto", "templates", template_dir, "skeleton"),
                 package = "akrreport"))
 
-  # Copy all single files and subfolders in skeleton/ into new path
+  # Copy all files and subfolders in the skeleton folder into a new folder
   for (i in seq_along(list_of_files)) {
     file.copy(system.file(file.path("quarto", "templates", template_dir, "skeleton", list_of_files[i]),
                           package = "akrreport"), file.path(tmp_dir), recursive = TRUE)
-  }
-
-
-  # Copy selected resource file into new path
-  if (template %in% c("pdf_simple", "pdf_report")) {
-    copy_font_files(template, font, type = "quarto", current_dir = tmp_dir)
-  }
-
-  if (template == "word") {
-    if (font == "Helvetica") filename <- "akrreport-template-helvetica.docx"
-    file.copy(
-      from = find_resource("word", file = filename, type = "quarto"),
-      to = file.path(tmp_dir, "akrereport-template.docx")
-    )
   }
 
   file.rename(tmp_dir, dirname)

@@ -1,8 +1,8 @@
 #' Convert R Markdown to a MS Word document
 #'
 #' This function serves as wrapper for \code{\link[bookdown]{word_document2}}, with a
-#' custom Pandoc Word template and different knitr default values (e.g., \code{number_sections = FALSE}).
-#' The Word template is based on the standard template of the Alaska Refuge Report Series.
+#' custom Pandoc Word template and knitr default values (e.g., \code{number_sections = FALSE}) 
+#' that match the template of the Alaska Refuge Report Series.
 #'
 #' @param toc logical; \code{TRUE} to include a table of contents in the output.
 #' @param toc_depth integer; Depth of headers to include in table of contents. Default set to 4.

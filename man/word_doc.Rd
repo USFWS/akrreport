@@ -2,7 +2,7 @@
 % Please edit documentation in R/word_doc.R
 \name{word_doc}
 \alias{word_doc}
-\title{Convert R Markdown to a Microsoft Word document}
+\title{Convert R Markdown to a MS Word document}
 \usage{
 word_doc(
   toc = FALSE,
@@ -50,8 +50,8 @@ A modified \code{\link[rmarkdown]{word_document}} based on a Word template.
 }
 \description{
 This function serves as wrapper for \code{\link[bookdown]{word_document2}}, with a
-custom Pandoc Word template and different knitr default values (e.g., \code{number_sections = FALSE}).
-The Word template is based on the standard template of the Alaska Refuge Report Series.
+custom Pandoc Word template and knitr default values (e.g., \code{number_sections = FALSE}) 
+that match the template of the Alaska Refuge Report Series.
 }
 \examples{
 \dontrun{

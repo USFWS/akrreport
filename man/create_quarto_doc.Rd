@@ -4,7 +4,7 @@
 \alias{create_quarto_doc}
 \title{Create a new directory with the Quarto template}
 \usage{
-create_quarto_doc(dirname = "new-doc", template = "html", font = "Helvetica")
+create_quarto_doc(dirname = "new-doc", template = "word_doc")
 }
 \arguments{
 \item{dirname}{character; the name of the directory to create.}
@@ -21,9 +21,9 @@ based on the standard template of the Alaska Refuge Report Series.
 }
 \examples{
 \dontrun{
- # Create template for HTML document
- create_quarto_doc(dirname = "my_html_doc", template = "html")
- # Create template for simple PDF document using the default font 'Helvetica'
- create_quarto_doc(dirname = "my_pdf_doc", template = "pdf_simple")
+ # Create template for Word document
+ create_quarto_doc(dirname = "my_word_report", template = "word_doc")
+ # Create template for a PDF document
+ create_quarto_doc(dirname = "my_pdf_report", template = "pdf_doc")
 }
 }
