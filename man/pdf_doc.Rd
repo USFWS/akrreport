@@ -25,14 +25,6 @@ custom Pandoc \LaTeX template and different default values for other arguments
 \details{
 Possible arguments for the YAML header are:
 \itemize{
-  \item \code{title} Title of the manuscript.
-  \item \code{author} Character of single or multiple author(s)
-  \item \code{date} The date (automatically set).
-  \item \code{fontsize} The font size for the body text (default is 11pt)
-  \item \code{linkcolor}, \code{filecolor}, \code{citecolor}, \code{urlcolor}
-             Colors for internal links (incl. ToC), external links, citation
-             links, and linked URLs.
-  \item \code{classoption} Options of the \code{article} class
   \item \code{bibliography} Path to the bibliography file to use for references
              (BibTeX *.bib* file). This template uses the bibliography-related
              package \href{https://ctan.org/pkg/natbib}{natbib}. The current file
