@@ -17,8 +17,8 @@ including the Alaska Refuge Report Series.
 
 ## Installation
 
-To use `akrreport` and generate the pdf Project Reports from the
-template, you’ll need:
+To use `akrreport` and generate Word or PDF reports from a template,
+you’ll need:
 
 1.  **R version \>4.0** Available through FWS Apps-to-Go
 
@@ -47,7 +47,7 @@ below:
 
 ![Alaska Refuge Report](./README-images/templates.png)
 
-# USFWS Disclaimer
+## USFWS Disclaimer
 
 This United States Fish & Wildlife Service (USFWS) code is provided on
 an “as is” basis and the user assumes responsibility for its use. USFWS

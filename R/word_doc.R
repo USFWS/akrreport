@@ -39,41 +39,37 @@
 word_doc <- function(toc = FALSE, toc_depth = 4, number_sections = FALSE,
                      highlight = "default", reference_docx = "akrreport-template", font = "other",
                      dpi = 144, pandoc_args = NULL, ...) {
-
-  # Font setting
-  if (!font %in% c("Helvetica", "other")) {
-    stop('Set the font option to "Helvetica" or "other".')
-  }
-  if (font == "Helvetica") filename <- "akrreport-template.docx"
+  
+  filename <- "akrreport-template.docx"
 
   if (reference_docx == "akrreport-template") {
     base <- rmd_word_document_format(
-      format         = "word_doc",
-      filename       = filename,
-      toc            = toc,
-      toc_depth      = toc_depth,
+      format = "word_doc",
+      filename = filename,
+      toc = toc,
+      toc_depth = toc_depth,
       number_sections = number_sections,
-      highlight      = highlight,
-      keep_md        = FALSE,
-      pandoc_args    = c(pandoc_args, "--top-level-division=section"),
+      highlight = highlight,
+      keep_md = FALSE,
+      pandoc_args = c(pandoc_args, "--top-level-division=section"),
       ...
     )
   }
   else {
     base <- bookdown::word_document2(
-      toc            = toc,
-      toc_depth      = toc_depth,
+      toc = toc,
+      toc_depth = toc_depth,
       number_sections = number_sections,
-      highlight      = highlight,
-      keep_md        = FALSE,
+      highlight = highlight,
+      keep_md = FALSE,
       reference_docx = reference_docx,
-      pandoc_args    = c(pandoc_args, "--top-level-division=section"),
+      pandoc_args = c(pandoc_args, "--top-level-division=section"),
       ...
     )
   }
 
   # Set chunk options
-  base$knitr$opts_chunk$comment   <- NA
+  base$knitr$opts_chunk$comment <- NA
   base$knitr$opts_chunk$dpi <- dpi
 
   return(base)

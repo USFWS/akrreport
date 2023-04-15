@@ -1,20 +1,12 @@
 ---
-title: 
-subtitle: 
-author: 
-date: 
-### Uncomment the following line if a summary should be shown after the title 
-# abstract: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr."
-
-### Comment or remove the following two lines if NO references are used
-bibliography: [bib/sample.bib, bib/packages.bib]  # Path to bibliography files 
+# Comment or remove the following two lines if NO references are used
+bibliography: [bib/sample.bib, bib/packages.bib]  # Path to bibliography files
 csl: bib/the-journal-of-wildlife-management.csl   # Path to reference style file
 
-### Settings for rendering the document:
+# Settings for rendering the document
 output: 
   akrreport::word_doc:
     toc: false
-    font: "Helvetica"
 ---
 
 ```{r setup, include = FALSE}
@@ -25,7 +17,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 ```
 
 ```{r load-packages, include = FALSE}
-# Load all your packages that you need later
+# Load required packages
 library(knitr)
 ```
 
@@ -33,41 +25,119 @@ library(knitr)
 # Automatically create a bib database for R packages used above
 knitr::write_bib(
   x = c(.packages(), 'bookdown', 'rmarkdown', 'akrreport',
-    # Add here now all packages that are loaded above:
+    # Add here all packages that are loaded in the above 'load-packages' chunk
     'knitr'), 
   file = 'bib/packages.bib')
 ```
 
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
+<!-- Cover banner -->
+::: {custom-style="CoverPhoto"}
+| ![Photo Caption/FWS](images/banner.jpg)
+:::
+<!-- Cover banner -->
 
-# Introduction 
+<!-- Report Number -->
+::: {custom-style="ReportNumber"}
+| Alaska Refuge Report YYYY-REPORT # 1234
+:::
+<!-- Report Number -->
+
+<!-- Title -->
+::: {custom-style="Title"}
+| Report title
+| up to three lines
+| long
+:::
+<!-- Title -->
+
+<!-- Author -->
+::: {custom-style="Author"}
+| Author 1, Author 2, Author 3
+:::
+<!-- Author -->
+
+<!-- Cover photo -->
+::: {custom-style="CoverPhoto"}
+| ![Photo Caption/FWS](images/cover_photo.jpg)
+:::
+<!-- Cover photo -->
+
+<br>
+
+<!-- Report info -->
+::: {custom-style="ReportInfo"}
+| PRIMR #: {PRIMR #}
+| ServCat Reference #: {ServCat #}
+| {Refuge Name}
+| {Month Year}
+:::
+<!-- Report info -->
+
+<!-- Add page break -->
+\newpage
+
+<!-- Refuge logo -->
+::: {custom-style="CoverPhoto"}
+| ![Photo Caption/FWS](images/nwrs_logo.png)
+:::
+<!-- Refuge logo -->
+
+<br>
+<br>
+
+The Alaska Refuge System reports its study plans and results through the Alaska Refuges Report Series. This series publishes peer reviewed study plans prepared before a project begins and scientific findings which are premature or too limited for journal publication but provide valuable information or interpretations to the field of study. Additionally, major scientific results are published in appropriate peer reviewed journals. The Alaska Refuges Report Series is available online at:  http://alaska.fws.gov/science/report.htm.
+
+<br>
+
+How to cite this report: Example: Anastasio, T., J. Fishman, M. Gordon, P. McConnell. Year. Report title. Refuge Name. City, Alaska. Alaska Refuges Report Series no. YYYY-REPORT#. https://doi.org/{UNIQUE DOI}
+
+<br>
+
+Disclaimer:  The use of trade names of commercial products in this report does not constitute endorsement or recommendation for use by the federal government.
+
+<!-- Add page break -->
+\newpage
+
+## Abstract
+Limit to 300 words. This is a formatted template for the Alaska Refuges Report Series.  Ideally, the text body, headers, margins, headers and footers are all ready, and the authors need only insert the appropriate text and figures into the template. It is recommended that authors save this template separately before editing. Formatting can easily be changed or deleted during report entry. Edit the headings and subheadings as appropriate for your manuscript. For example, protocols will have different sections than a report. Before finalizing your report for peer review in accordance with the Alaska Refuge Report Series Peer Review guidance, contact an Associate Editor for a report series number, and enter it into the cover and header.  
+
+## Keywords
+Species names, locations, methods, analysis, interpretations (alphabetical order)
+
+***
+
+<br><br><br>
+
+Introductory text, background material, appropriate literature review, and survey objectives. For literature citations throughout, use format (author date).
+
+<br>
+    
+Text body is double-spaced between paragraphs and single-space in the body of a paragraph. Do not indent first line of paragraphs. Text is left-justified.
+
+
+# Study Area
+A description of the study area. Maps or figures are recommended. Include a compass arrow, legend, and scale bar in maps.
+
+# Methods
 
 ## YAML header
 
 Configure the YAML header including the following elements:
 
-- *title*: Title
-- *subtitle*: Subtitle; remove option completely, if you don't need a subtitle.
-- *author*: Character of single or multiple author(s)
-- *date*: A date
-- *abstract*: The abstract will be shown right after the title in smaller font size. 
 - *bibliography*: A path to the bibliography file to use for references (BibTeX *.bib* file). The current file includes 3 dummy references; either insert your references into this file or replace the file with your own.
-- *csl*: The style is provided in the 'sage-harvard.csl' file, which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style. Just leave the file as it is.
+- *csl*: The style is provided in the 'the-journal-of-wildlife-management.csl' file, which adopts the [Journal of Wildlife Management](https://wildlife.onlinelibrary.wiley.com/hub/journal/19372817/forauthors.html) reference style. Just leave the file as it is.
 - *output*: The nested fields for the output field are based on the arguments of the output function. Since *akrreport::word_doc* is based on *bookdown::word_document2*, see its help page for more options. Current default settings are
     - *toc: FALSE*
     - *toc_depth: 4*
     - *number_sections: FALSE*
     - *highlight:  "default"*
     - *reference_docx: "akrreport-template"*
-    - *font = "Helvetica"*
+    - *font: "Univers Condensed"*
     - *dpi: 144*
 
-By default *akrreport::word_doc* uses a 'akrreport-template.docx' template file, which is based on standard template file for the Alaska Refuge Report Series except for the font type, which is by default 'Helvetica'.
+By default *akrreport::word_doc* uses a 'akrreport-template.docx' template file, which is based on standard template file for the Alaska Refuge Report Series except for the font type, which is by default 'Univers Condensed'.
 
-However, if you feel like using your own template or the standard Word template (i.e. the Normal.dot file), simply provide the path to your file or write "default" for the latter case (*reference_docx: "default"*). For further options see also the documentation of the *bookdown::word_document2* function, which is internally called. 
+However, if you feel like using your own template or the standard Word template (i.e. the Normal.doc file), simply provide the path to your file or write "default" for the latter case (*reference_docx: "default"*). For further options see also the documentation of the *bookdown::word_document2* function, which is internally called. 
 
 
 ## The bookdown package
@@ -77,8 +147,6 @@ If you are new to working with [bookdown](https://bookdown.org/) or even to [rma
 - [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J. Allaire, and Garrett Grolemund
 - [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) by Yihui Xie
 
-
-# Methods
 
 ## Cross-references
 
@@ -123,6 +191,15 @@ $\pi$ represents the circle number or Ludolph's number. The function
 represents then the distribution function of \@ref(eq:density-norm).
 
 The numbering of equations, as in \@ref(eq:density-norm), should only be done if they are referred to in the rest of the text. Especially if there are many equations in a report, the use of LaTeX seems to make more sense.
+
+
+## Field methods
+A description of the field methods used to collect data.
+
+## Data analysis
+A description of the statistical methods used to analyze data.
+
+All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables, was generated using the packages 'bookdown' (version `r packageVersion("bookdown")`) [@R-bookdown], 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'UHHformats' (version `r packageVersion("akrreport")`) [@R-akrreport], and 'knitr' (version `r packageVersion("knitr")`) [@R-knitr]. 
 
 
 # Results
@@ -175,7 +252,9 @@ boxplot(mpg ~ am, mtcars)
 Images are always displayed across the entire width in the Word document. Unfortunately, settings via the code chunk options 'fig.height' and 'out.width' do not currently work in Word! For external images adjust the width via the size of the image file itself. 
 
 
-# Adding citations and bibliography
+# Discussion
+
+## Adding citations and bibliography
 
 Link a `.bib` document via the YAML header, and the bibliography will be printed at the very end (as usual). The default bibliography style is provided in the `the-journal-of-wildlife-management.csl` file, which adopts the [Journal of Wildlife Management](https://www.nacwg.org/JWMguidelines2011.pdf) reference style.
 
@@ -183,15 +262,16 @@ References can be cited directly within the document using the R Markdown equiva
 
 There is also the package [citr](https://github.com/crsh/citr). *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document. If you are using the reference manager [Zotero](https://www.zotero.org/) the add-in can access your reference database directly.
 
-## Software
 
-If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions. The code to create a separate bibliography file named 'packages.bib' with all package references has already been added at the beginning of this script (code chunk 'generate-package-refs').
+# Acknowledgements
+Body of text in appreciation of logistical support, funding sources, field technicians, managers, and others who contributed to the work. 
 
-All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables, was generated using the packages 'bookdown' (version `r packageVersion("bookdown")`) [@R-bookdown], 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'UHHformats' (version `r packageVersion("akrreport")`) [@R-akrreport], and 'knitr' (version `r packageVersion("knitr")`) [@R-knitr]. 
 
-<!-- This will start a new page (LaTeX code) -->
+# Data availability
+The data presented in this report are available at {ServCat URL}.
+
+<!-- Add page break -->
 \newpage
-
 
 # References
 
