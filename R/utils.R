@@ -85,7 +85,13 @@ rmd_pdf_book_format <- function(..., template, filename, csl) {
 # that includes a custom Word template
 rmd_word_document_format <- function(format, filename, ...) {
   template <- find_file(format, file = filename)
-  fmt <- bookdown::word_document2(..., reference_docx = template)
+  fmt <- officedown::rdocx_document(..., 
+                                    base_format = "bookdown::word_document2",
+                                    tables = list(caption = list(fp_text = officer::fp_text_lite(bold = FALSE))),
+                                    plots = list(caption = list(style = "Image Caption",
+                                                                fp_text = officer::fp_text_lite(bold = FALSE))),
+                                    reference_docx = template,
+                                    clean = TRUE)
   return(fmt)
 }
 

@@ -4,7 +4,7 @@
 \alias{create_quarto_doc}
 \title{Create a new directory with the Quarto template}
 \usage{
-create_quarto_doc(dirname = "new-doc", template = "word_doc")
+create_quarto_doc(dirname = "new_report", template = "word_doc")
 }
 \arguments{
 \item{dirname}{character; the name of the directory to create.}

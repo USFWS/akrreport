@@ -50,7 +50,7 @@ A modified \code{\link[rmarkdown]{word_document}} based on a Word template.
 }
 \description{
 This function serves as wrapper for \code{\link[bookdown]{word_document2}}, with a
-custom Pandoc Word template and knitr default values (e.g., \code{number_sections = FALSE}) 
+custom Pandoc Word template and knitr default values (e.g., \code{number_sections = FALSE})
 that match the template of the Alaska Refuge Report Series.
 }
 \examples{

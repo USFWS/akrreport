@@ -15,16 +15,13 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE, 
                       warning = FALSE, 
                       error = FALSE, 
-                      cache = TRUE,
-                      fig.path ='figs/', 
-                      cache.path = 'cache/',
-                      tab.cap.sep = ".",
-                      tab.cap.style = "Caption")
+                      fig.path ='figs/')
 ```
 
 ```{r load-packages, include = FALSE}
 # Load required packages
 library(knitr)
+library(flextable)
 ```
 
 ```{r generate-package-refs, include=FALSE}
@@ -35,18 +32,21 @@ knitr::write_bib(
     'knitr'), 
   file = 'bib/packages.bib')
 ```
-
+  
 <!-- Cover banner -->
 ::: {custom-style="CoverPhoto"}
 | ![Photo Caption/FWS](images/banner.jpg)
 :::
 <!-- Cover banner -->
 
+  
 <!-- Report Number -->
 ::: {custom-style="ReportNumber"}
 | Alaska Refuge Report YYYY-REPORT # {ReportNumber}
 :::
 <!-- Report Number -->
+
+<br>
 
 <!-- Title -->
 ::: {custom-style="Title"}
@@ -56,11 +56,15 @@ knitr::write_bib(
 :::
 <!-- Title -->
 
+<br>
+
 <!-- Author -->
 ::: {custom-style="Author"}
-| Author 1, Author 2, Author 3
+| Author1, Author2, Author3
 :::
 <!-- Author -->
+
+<br>
 
 <!-- Cover photo -->
 ::: {custom-style="CoverPhoto"}
@@ -71,16 +75,14 @@ knitr::write_bib(
 <br>
 
 <!-- Report info -->
-::: {custom-style="ReportInfo"}
-| PRIMR #: {PRIMR #}
-| ServCat Reference #: {ServCat #}
-| {Refuge Name}
-| {Month Year}
-:::
+<!-- ::: {custom-style="ReportInfo"} -->
+<!-- | PRIMR #: {PRIMR #} -->
+<!-- | ServCat Reference #: {ServCat #} -->
+<!-- | {Refuge Name} -->
+<!-- | {Month Year} -->
+<!-- ::: -->
 <!-- Report info -->
 
-<!-- Add page break -->
-\newpage
 
 <!-- Refuge logo -->
 ::: {custom-style="CoverPhoto"}
@@ -91,23 +93,53 @@ knitr::write_bib(
 <br>
 <br>
 
-The Alaska Refuge System reports its study plans and results through the Alaska Refuges Report Series. This series publishes peer reviewed study plans prepared before a project begins and scientific findings which are premature or too limited for journal publication but provide valuable information or interpretations to the field of study. Additionally, major scientific results are published in appropriate peer reviewed journals. The Alaska Refuges Report Series is available online at: <http://alaska.fws.gov/science/report.htm>.
+The Alaska Refuge Report Series is used to disseminate information and analysis about natural resources and related topics concerning lands managed by the National Wildlife Refuge System in Alaska. The series supports the advancement of science and informed decision-making by publishing scientific findings that may be ongoing or too limited for journal publication but provide valuable information or interpretations to the field of study. 
 
 <br>
 
-How to cite this report: *Replace this with your citation:* {Anastasio, T., J. Fishman, M. Gordon, P. McConnell. Year. Report title. Refuge Name. City, Alaska. Alaska Refuges Report Series no. YYYY-REPORT#. <https://doi.org/%7BUNIQUE> DOI}
+Manuscripts in the series receive an appropriate level of peer review to ensure that the information is scientifically credible, technically accurate, appropriately written for the intended audience, and designed and published in a professional manner. 
 
 <br>
 
 Disclaimer: The use of trade names of commercial products in this report does not constitute endorsement or recommendation for use by the federal government.
 
+<br>
+
+How to cite this report:
+LastName, F., N. LastName, and I. LastName. Year. Full report title in sentence case. Alaska Refuge Report
+YYYY-REPORT#. https://doi.org/{UNIQUEDOI}.
+
+<br>  
+<br>  
+<br>  
+<br>  
+<br>  
+<br> 
+<br>  
+<br>  
+<br>  
+<br> 
+<br>  
+<br>  
+<br> 
+<br> 
+<br> 
+
+ON THE COVER  
+Image caption goes here  
+Image credit goes here 
+
+
+
 <!-- Add page break -->
 
 \newpage
 
+
 ## Abstract
 
 Limit to 300 words. This is a formatted template for the Alaska Refuges Report Series. Ideally, the text body, headers, margins, headers and footers are all ready, and the authors need only insert the appropriate text and figures into the template. It is recommended that authors save this template separately before editing. Formatting can easily be changed or deleted during report entry. Edit the headings and subheadings as appropriate for your manuscript. For example, protocols will have different sections than a report. Before finalizing your report for peer review in accordance with the Alaska Refuge Report Series Peer Review guidance, contact an Associate Editor for a report series number, and enter it into the cover and header.
+
 
 ## Keywords
 
@@ -121,9 +153,11 @@ Introductory text, background material, appropriate literature review, and surve
 
 The default format for text body is double-spaced between paragraphs and single-space in the body of a paragraph. Do not indent the first line of a paragraph. Text is left-justified.
 
+
 # Study Area
 
 A description of the study area. Maps or figures are recommended. Include a compass arrow, legend, and scale bar in maps.
+
 
 # Methods
 
@@ -146,12 +180,13 @@ By default *akrreport::word_doc* uses a 'akrreport-template.docx' template file,
 
 If you feel like using your own template or the standard Word template (i.e. the Normal.doc file), you will need to provide the path to your file or write "default" for the latter case (*reference_docx: "default"*). For further options see also the documentation of the *bookdown::word_document2* function, which is called internally by *akrreport:word_doc*.
 
-## The bookdown package
+## The officedown package
 
-If you are new to working with [bookdown](https://bookdown.org/) or even to [rmarkdown](https://rmarkdown.rstudio.com/), please read over this documentation. To learn more about the *bookdown* and *rmarkdown* packages in general:
+If you are new to working with [officedown](https://davidgohel.github.io/officedown/), [bookdown](https://bookdown.org/), or even [rmarkdown](https://rmarkdown.rstudio.com/), please read over their documentation. To learn more about the `officedown`, `bookdown`, and `rmarkdown` packages in general:
 
 -   [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J. Allaire, and Garrett Grolemund
 -   [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) by Yihui Xie
+-   [officeverse guidance](https://ardata-fr.github.io/officeverse/officedown-for-word.html) by David Gohel
 
 ## Cross-references
 
@@ -159,7 +194,7 @@ External images and R figures can be referenced with '\@ref(fig:<label>)', where
 
 Cross-references to individual sections can simply be made by placing the name of the section into squared brackets, e.g. a link to the [Figures] is made via '[Figures]'.
 
-Tables also require a label and caption for cross-referencing like figures. The cross-reference for a table, however, contains 'tab:' in '\@ref(tab:<name>)') instead of 'fig:'. Also, table captions produced with R cannot be set in the chunk options like they are for figures. Instead, table captions should be defined in the R function directly (see examples in [Results]). This is a cross-reference to table \@ref(tab:kable1) in the [Using the *knitr* package] chapter.
+Tables also require a label and caption for cross-referencing like figures. The cross-reference for a table, however, contains 'tab:' in '\@ref(tab:<name>)') instead of 'fig:'. Also, table captions produced with R cannot be set in the chunk options like they are for figures. Instead, table captions should be defined in the R function directly (see examples in [Results]). This is a cross-reference to table \@ref(tab:kable1) in the [Using the `knitr` package] chapter.
 
 ## Mathematical equations
 
@@ -205,6 +240,7 @@ A description of the statistical methods and software used to analyze data. The 
 
 All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables, was generated using the packages 'bookdown' (version `r packageVersion("bookdown")`) [@R-bookdown], 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'akrreport' (version `r packageVersion("akrreport")`) [@R-akrreport], and 'knitr' (version `r packageVersion("knitr")`) [@R-knitr].
 
+
 # Results
 
 ## R output
@@ -219,24 +255,16 @@ summary(iris[,1:3])
 
 If the output format is Word tables are generated best using R packages instead of R Markdown syntax. The following two sections demonstrate some useful packages.
 
-### Using the *knitr* package
+### Using the `knitr` package
 
-Table \@ref(tab:kable1) is an example of using *knitr::kable()* to generate the table. The function has an explicit argument named 'caption' where you can place your caption text.
+Table \@ref(tab:kable1) is an example of using `knitr::kable()` to generate the table. The function has an explicit argument named 'caption' where you can place your caption text.
 
-```{r kable1}
-library(flextable)
-library(magrittr)
+```{r kable1, ft.align="left"}
 df <- mtcars[1:5, 1:6]
-# knitr::kable(
-#   df,
-#   caption = "This is a table produced with knitr::kable().",
-#   longtable = TRUE,
-#   booktabs = TRUE)
-# (the last two options make the table a bit more readable)
 
 set_flextable_defaults(font.family = "Univers Condensed Light")
-flextable::regulartable(df) %>%
-  set_caption("Table Caption") %>%
+flextable::regulartable(df) |>
+  set_caption("Table Caption") |>
   autofit()
 ```
 
@@ -254,11 +282,10 @@ abline(lm(mpg ~ hp, data = mtcars), col = "red")
 
 You can also include images (Fig. \@ref(fig:bear-fig)).
 
-```{r bear-fig, fig.cap = "Here's a picture of a bear in Alaska."}
+```{r bear-fig, fig.cap = "Here's a picture of a bear in Alaska.", fig.asp= 1, fig.width=2}
 knitr::include_graphics("images/bear.jpg")
 ```
 
-Images are always displayed across the entire width in the Word document. Unfortunately, settings via the code chunk options 'fig.height' and 'out.width' do not currently work in Word! For external images adjust the width via the size of the image file itself.
 
 # Discussion
 
@@ -268,12 +295,14 @@ Link a `.bib` document via the YAML header, and the bibliogaphy will be printed 
 
 References can be cited directly within the document using the R Markdown equivalent of the LaTeX citation system `[@key]`, where key is the citation key in the first line of the entry in the .bib file. Example: [\@fws2001]. To cite multiple entries, separate the keys by semicolons (e.g., [@paul2009; @buckland1997]).
 
-If you are using the reference manager [Zotero](https://www.zotero.org/) (**highly recommended**), then Rstudio can [access your reference library directly](https://bookdown.org/pdr_higgins/rmrwr/adding-citations-to-your-rmarkdown.html). Zotero is available through FWS Apps-2-Go. 
+If you are using the reference manager [Zotero](https://www.zotero.org/) (recommended), then Rstudio can [access your reference library directly](https://bookdown.org/pdr_higgins/rmrwr/adding-citations-to-your-rmarkdown.html). Zotero is available through FWS Apps-2-Go. 
 There is also the package [citr](https://github.com/crsh/citr). *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document.
+
 
 # Acknowledgements
 
 Include your appreciation of logistical support, funding sources, field technicians, managers, and others who contributed to the work.
+
 
 # Data availability
 
@@ -282,6 +311,7 @@ All the raw data used in your report should be publicly-accessible, unless legal
 <!-- Add page break -->
 
 \newpage
+
 
 # References
 

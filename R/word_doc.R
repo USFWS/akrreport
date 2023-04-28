@@ -56,7 +56,8 @@ word_doc <- function(toc = FALSE, toc_depth = 4, number_sections = FALSE,
     )
   }
   else {
-    base <- bookdown::word_document2(
+    base <- officedown::rdocx_document(
+      base_format = "bookdown::word_document2",
       toc = toc,
       toc_depth = toc_depth,
       number_sections = number_sections,

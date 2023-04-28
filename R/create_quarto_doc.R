@@ -18,7 +18,7 @@
 #' }
 #' @export
 
-create_quarto_doc <- function(dirname = "new-doc", template = "word_doc") {
+create_quarto_doc <- function(dirname = "new_report", template = "word_doc") {
 
   templates <- c("pdf_doc", "word_doc")
   template <- match.arg(template, templates)
@@ -39,6 +39,19 @@ create_quarto_doc <- function(dirname = "new-doc", template = "word_doc") {
   for (i in seq_along(list_of_files)) {
     file.copy(system.file(file.path("quarto", "templates", template_dir, "skeleton", list_of_files[i]),
                           package = "akrreport"), file.path(tmp_dir), recursive = TRUE)
+  }
+  
+  # Copy selected resource file into new path
+  if (template == "pdf_doc") {
+    copy_font_files(template, font, type = "quarto", current_dir = tmp_dir)
+  }
+  
+  if (template == "word_doc") {
+    filename <- "akrreport-template.docx"
+    file.copy(
+      from = find_file("word_doc", file = filename, type = "quarto"),
+      to = file.path(tmp_dir, "akrreport-template.docx")
+    )
   }
 
   file.rename(tmp_dir, dirname)

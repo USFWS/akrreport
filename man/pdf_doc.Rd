@@ -25,14 +25,14 @@ custom Pandoc \LaTeX template and different default values for other arguments
 \details{
 Possible arguments for the YAML header are:
 \itemize{
-  \item \code{bibliography} Path to the bibliography file to use for references
-             (BibTeX *.bib* file). This template uses the bibliography-related
-             package \href{https://ctan.org/pkg/natbib}{natbib}. The current file
-             includes 3 dummy references; either insert your references into
-             this file or replace the file with your own.
-  \item \code{header-includes} Custom additions to the header, before the
-             \code{\\begin\{document\}} statement
-  \item \code{include-after} For including additional LaTeX code before the
-             \code{\\end\{document\}} statement
- }
+\item \code{bibliography} Path to the bibliography file to use for references
+(BibTeX \emph{.bib} file). This template uses the bibliography-related
+package \href{https://ctan.org/pkg/natbib}{natbib}. The current file
+includes 3 dummy references; either insert your references into
+this file or replace the file with your own.
+\item \code{header-includes} Custom additions to the header, before the
+\code{\\begin\{document\}} statement
+\item \code{include-after} For including additional LaTeX code before the
+\code{\\end\{document\}} statement
+}
 }

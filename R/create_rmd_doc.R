@@ -31,7 +31,7 @@ create_rmd_doc <- function(dirname = "new-doc", template = "word_doc") {
   dir.create(tmp_dir)
   template_dir <- template
 
-  # Get all file names in the /skeleton folder
+  # Get all file names in the skeleton folder
   list_of_files <- list.files(
     system.file(file.path("rmarkdown", "templates", template_dir, "skeleton"),
                 package = "akrreport"))
