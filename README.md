@@ -42,7 +42,7 @@ devtools::install_github("usfws/akrreport")
 ```
 
 This will install the package `akrreport`. Once installed, templates
-will be available within the R Markdown and Quarto templates as shown
+will be available within the R Markdown templates as shown
 below:
 
 ![Alaska Refuge Report](./README-images/templates.png)
