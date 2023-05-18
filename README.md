@@ -32,7 +32,7 @@ you’ll need:
     tinytex::install_tinytex()
     ```
 
-## Using a Template
+## Usage
 
 Install the template directly:
 
@@ -42,20 +42,19 @@ devtools::install_github("usfws/akrreport")
 ```
 
 This will install the package `akrreport`. Once installed, templates
-will be available within the R Markdown templates as shown
+will be available within the R Markdown and Quarto templates as shown
 below:
 
 ![Alaska Refuge Report](./README-images/templates.png)
 
-## USFWS Disclaimer
+## Getting help
 
-This United States Fish & Wildlife Service (USFWS) code is provided on
-an “as is” basis and the user assumes responsibility for its use. USFWS
-has relinquished control of the information and no longer has
-responsibility to protect the integrity , confidentiality, or
-availability of the information. Any reference to specific commercial
-products, processes, or services by service mark, trademark,
-manufacturer, or otherwise, does not constitute or imply their
-endorsement, recomendation or favoring by USFWS. The USFWS seal and logo
-shall not be used in any manner to imply endorsement of any commercial
-product or activity by USFWS or the United States Government.
+Contact the [project maintainer](emailto:mccrea_cobb@fws.gov) for help
+with this repository.
+
+## Contribute
+
+Contact the [project maintainer](emailto:mccrea_cobb@fws.gov) for
+information about contributing to this repository template. Submit a
+[GitHub Issue](https://github.com/USFWS/r7-repo-template/issues) to
+report a bug or request a feature or enhancement.
