@@ -34,12 +34,9 @@ you’ll need:
 
 ## Usage
 
-Install the template directly:
-
-``` r
-if (!requireNamespace("devtools")) install.packages("devtools")
-devtools::install_github("usfws/akrreport")
-```
+The package reprository is currently set to Internal access. To install the template, 
+you will need to download the package as a zip file and then install it from a local 
+copy of the zip file.
 
 This will install the package `akrreport`. Once installed, templates
 will be available within the R Markdown and Quarto templates as shown
