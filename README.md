@@ -35,8 +35,8 @@ you’ll need:
 ## Usage
 
 The package reprository is currently set to Internal access. To install the template, 
-you will need to download the package as a zip file and then install it from a local 
-copy of the zip file.
+you will need to download the package as a tar.gz file [here](https://github.com/USFWS/akrreport/tags) 
+and then install from this file. 
 
 This will install the package `akrreport`. Once installed, templates
 will be available within the R Markdown and Quarto templates as shown
