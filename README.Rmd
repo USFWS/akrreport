@@ -12,11 +12,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# akrreport <a href=""><img src="./README-images/logo.png" align="right" height="138" /></a>
-
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/USFWS/akrreport/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/USFWS/akrreport/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
+
+akrreport <a href=""><img src="./README-images/logo.png" align="right" height="138" /></a>
+================================
 
 ## Overview
 
@@ -56,3 +58,9 @@ Contact the [project maintainer](emailto:mccrea_cobb@fws.gov) for help with this
 ## Contribute
 
 Contact the [project maintainer](emailto:mccrea_cobb@fws.gov) for information about contributing to this repository template. Submit a [GitHub Issue](https://github.com/USFWS/r7-repo-template/issues) to report a bug or request a feature or enhancement.
+
+-----
+
+![](https://i.creativecommons.org/l/by/4.0/88x31.png) This work is
+licensed under a [Creative Commons Attribution 1.0 International
+License](https://creativecommons.org/licenses/by/1.0/).

@@ -1,13 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# akrreport <a href=""><img src="./README-images/logo.png" align="right" height="138" /></a>
-
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/USFWS/akrreport/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/USFWS/akrreport/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
+
+# akrreport <a href=""><img src="./README-images/logo.png" align="right" height="138" /></a>
 
 ## Overview
 
@@ -34,15 +34,21 @@ you’ll need:
 
 ## Usage
 
-The package reprository is currently set to Internal access. To install the template, 
-you will need to download the package as a tar.gz file [here](https://github.com/USFWS/akrreport/tags) 
-and then install from this file. 
+Install the template directly:
+
+``` r
+if (!requireNamespace("devtools")) install.packages("devtools")
+devtools::install_github("usfws/akrreport")
+```
 
 This will install the package `akrreport`. Once installed, templates
 will be available within the R Markdown and Quarto templates as shown
 below:
 
-![Alaska Refuge Report](./README-images/templates.png)
+<figure>
+<img src="./README-images/templates.png" alt="Alaska Refuge Report" />
+<figcaption aria-hidden="true">Alaska Refuge Report</figcaption>
+</figure>
 
 ## Getting help
 
@@ -55,3 +61,9 @@ Contact the [project maintainer](emailto:mccrea_cobb@fws.gov) for
 information about contributing to this repository template. Submit a
 [GitHub Issue](https://github.com/USFWS/r7-repo-template/issues) to
 report a bug or request a feature or enhancement.
+
+------------------------------------------------------------------------
+
+![](https://i.creativecommons.org/l/by/4.0/88x31.png) This work is
+licensed under a [Creative Commons Attribution 1.0 International
+License](https://creativecommons.org/licenses/by/1.0/).
