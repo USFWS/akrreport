@@ -1,8 +1,9 @@
-#' Convert R Markdown to a MS Word document
+#' Render a MS Word report using R Markdown
 #'
-#' This function serves as wrapper for \code{\link[bookdown]{word_document2}}, with a
-#' custom Pandoc Word template and knitr default values (e.g., \code{number_sections = FALSE}) 
-#' that match the template of the Alaska Refuge Report Series.
+#' This function serves as wrapper for \code{\link[bookdown]{word_document2}}, 
+#' with a custom Pandoc Word template and knitr default values 
+#' (e.g., \code{number_sections = FALSE}) that match the template of the Alaska 
+#' Refuge Report Series.
 #'
 #' @param toc logical; \code{TRUE} to include a table of contents in the output.
 #' @param toc_depth integer; Depth of headers to include in table of contents. Default set to 4.
@@ -18,8 +19,6 @@
 #'        The 'akrreport-template.docx' template implements the standard requirements for the Alaska
 #'        Refuge Report Series. If you prefer another template, pass the file name to this argument or simply use
 #'        'default' to use your standard Word template.
-#' @param font character; default font in the template file is "other". If you want
-#'        to provide your own Word template, there is no need to set any font here.
 #' @param dpi integer; the resolution of the output figures, default is 144 dots per inch.
 #' @param pandoc_args Additional command line options to pass to pandoc.
 #' @param ... Additional parameters to pass to \code{\link[bookdown]{word_document2}}.
@@ -36,9 +35,14 @@
 #'  # put in YAML header:
 #'  output: akrreport::word_doc
 #' }
-word_doc <- function(toc = FALSE, toc_depth = 4, number_sections = FALSE,
-                     highlight = "default", reference_docx = "akrreport-template", font = "other",
-                     dpi = 144, pandoc_args = NULL, ...) {
+word_doc <- function(toc = FALSE, 
+                     toc_depth = 4, 
+                     number_sections = FALSE,
+                     highlight = "default", 
+                     reference_docx = "akrreport-template", 
+                     dpi = 144, 
+                     pandoc_args = NULL, 
+                     ...) {
   
   filename <- "akrreport-template.docx"
 

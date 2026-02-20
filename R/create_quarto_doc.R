@@ -1,24 +1,22 @@
 #' Create a new directory with the Quarto template
 #'
 #' \code{create_quarto_doc} creates a new subdirectory inside the current directory, which will
-#' contain the ready-to-use Quarto file and all associated files. The Word and PDF templates are
-#' based on the standard template of the Alaska Refuge Report Series.
+#' contain the ready-to-use Quarto file and all associated files. The Word template
+#' is based on the standard template of the Alaska Refuge Report Series.
 #'
 #' @param dirname character; the name of the directory to create.
-#' @param template character; the template type to use. Choose "html" (default),
-#'   "pdf_simple", "pdf_report", or "word".
-#' @param font The font family of the document. Default is "Helvetica" (i.e. Helvetica Neue).
+#' @param template character; the template type to use. Currently includes a
+#' template for MS Word documents.
 #'
 #' @examples
 #' \dontrun{
 #'  # Create template for Word document
 #'  create_quarto_doc(dirname = "my_word_report", template = "word_doc")
-#'  # Create template for a PDF document
-#'  create_quarto_doc(dirname = "my_pdf_report", template = "pdf_doc")
 #' }
 #' @export
 
-create_quarto_doc <- function(dirname = "new_report", template = "word_doc") {
+create_quarto_doc <- function(dirname = "new_report", 
+                              template = "word_doc") {
 
   templates <- c("pdf_doc", "word_doc")
   template <- match.arg(template, templates)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/word_doc.R
 \name{word_doc}
 \alias{word_doc}
-\title{Convert R Markdown to a MS Word document}
+\title{Render a MS Word report using R Markdown}
 \usage{
 word_doc(
   toc = FALSE,
@@ -10,7 +10,6 @@ word_doc(
   number_sections = FALSE,
   highlight = "default",
   reference_docx = "akrreport-template",
-  font = "other",
   dpi = 144,
   pandoc_args = NULL,
   ...
@@ -36,9 +35,6 @@ The 'akrreport-template.docx' template implements the standard requirements for 
 Refuge Report Series. If you prefer another template, pass the file name to this argument or simply use
 'default' to use your standard Word template.}
 
-\item{font}{character; default font in the template file is "other". If you want
-to provide your own Word template, there is no need to set any font here.}
-
 \item{dpi}{integer; the resolution of the output figures, default is 144 dots per inch.}
 
 \item{pandoc_args}{Additional command line options to pass to pandoc.}
@@ -49,9 +45,10 @@ to provide your own Word template, there is no need to set any font here.}
 A modified \code{\link[rmarkdown]{word_document}} based on a Word template.
 }
 \description{
-This function serves as wrapper for \code{\link[bookdown]{word_document2}}, with a
-custom Pandoc Word template and knitr default values (e.g., \code{number_sections = FALSE})
-that match the template of the Alaska Refuge Report Series.
+This function serves as wrapper for \code{\link[bookdown]{word_document2}},
+with a custom Pandoc Word template and knitr default values
+(e.g., \code{number_sections = FALSE}) that match the template of the Alaska
+Refuge Report Series.
 }
 \examples{
 \dontrun{

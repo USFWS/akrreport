@@ -15,7 +15,8 @@ Imports:
     knitr,
     rmarkdown,
     utils,
-    officedown
+    officedown,
+    quarto
 Copyright: This software is in the public domain because it contains
     materials that originally came from the United States Fish & Wildlife
     Service, an agency of the United States Department of Interior. For
@@ -25,4 +26,4 @@ Copyright: This software is in the public domain because it contains
     https://www.fws.gov/help/policies.html
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3

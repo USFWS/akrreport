@@ -1,8 +1,9 @@
-#' Convert to report-like PDF/LaTeX document
+#' Render a PDF report using R Markdown
 #'
 #' This function serves as wrapper to \code{\link[rmarkdown]{pdf_document}}, with a
 #' custom Pandoc \LaTeX template and different default values for other arguments
-#' (e.g., \code{keep_tex = TRUE}) that match the template of the Alaska Refuge Report Series
+#' (e.g., \code{keep_tex = TRUE}) that match the template of the Alaska Refuge 
+#' Report Series.
 #'
 #' @param ... Arguments to \code{bookdown::pdf_book}
 #' @param keep_tex A boolean toggle to select whether intermediate

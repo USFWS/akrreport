@@ -1,0 +1,328 @@
+---
+format: 
+  pdf:
+    keep-tex: false
+    toc: false
+    toc-depth: 3
+    toc-title: Contents
+    number-sections: false
+    crossref: 
+      chapters: false     # set to 'true' if figure numbering should follow subsections
+    # Code options:
+    highlight-style: arrow # default
+execute: 
+  echo: false
+  warning: false
+  message: false
+editor: source
+
+# Comment or remove the following two lines if NO references are used
+bibliography: [bib/sample.bib, bib/packages.bib]  # Path to bibliography files
+csl: bib/the-journal-of-wildlife-management.csl   # Path to reference style file
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+
+# Load required packages
+library(knitr)
+library(flextable)
+```
+
+```{r}
+#| label: generate-package-refs
+#| include: false
+
+# Automatically create a bib database for R packages used above
+knitr::write_bib(
+  x = c(.packages(), 'bookdown', 'rmarkdown', 'akrreport',
+    # Add here all packages that are loaded in the above 'load-packages' chunk
+    'knitr'), 
+  file = 'bib/packages.bib')
+```
+
+
+| ![Photo Caption/FWS](images/banner.jpg)
+
+<!-- Report Number -->
+| Alaska Refuge Report YYYY-REPORT # {ReportNumber}
+
+<!-- Title -->
+| Report title
+| up to three lines
+| long
+<!-- Title -->
+
+<!-- Author -->
+| Author 1, Author 2, Author 3
+<!-- Author -->
+
+<!-- Cover photo -->
+![Photo Caption/FWS](images/cover_photo.jpg)
+<!-- Cover photo -->
+
+<br>
+
+<!-- Add page break -->
+\newpage
+
+<!-- Refuge logo -->
+| ![Photo Caption/FWS](images/nwrs_logo.png)
+<!-- Refuge logo -->
+
+<br> <br>
+
+The Alaska Refuge Report Series is used to disseminate information and analysis about natural resources and related topics concerning lands managed by the National Wildlife Refuge System in Alaska. The series supports the advancement of science and informed decision-making by publishing scientific findings that may be ongoing or too limited for journal publication but provide valuable information or interpretations to the field of study. 
+
+<br>
+
+Manuscripts in the series receive an appropriate level of peer review to ensure that the information is scientifically credible, technically accurate, appropriately written for the intended audience, and designed and published in a professional manner. 
+
+<br>
+
+Disclaimer: The use of trade names of commercial products in this report does not constitute endorsement or recommendation for use by the federal government.
+
+<br>
+
+How to cite this report:
+LastName, F., N. LastName, and I. LastName. Year. Full report title in sentence case. Alaska Refuge Report
+YYYY-REPORT#. https://doi.org/{UNIQUEDOI}.
+
+<br>  
+<br>  
+<br>  
+<br>  
+<br>  
+<br> 
+<br>  
+<br>  
+<br>  
+<br> 
+<br>  
+<br>  
+<br> 
+<br> 
+<br> 
+
+ON THE COVER  
+Image caption goes here  
+Image credit goes here 
+
+<!-- Add page break -->
+
+\newpage
+
+
+## Abstract
+
+Limit to 300 words. This is a formatted template for the Alaska Refuges Report Series. Ideally, the text body, headers, margins, headers and footers are all ready, and the authors need only insert the appropriate text and figures into the template. It is recommended that authors save this template separately before editing. Formatting can easily be changed or deleted during report entry. Edit the headings and subheadings as appropriate for your manuscript. For example, protocols will have different sections than a report. Before finalizing your report for peer review in accordance with the Alaska Refuge Report Series Peer Review guidance, contact an Associate Editor for a report series number, and enter it into the cover and header.
+
+## Keywords
+
+Species names, locations, methods, analysis, interpretations (*alphabetical order*)
+
+######## 
+
+<br><br><br>
+
+Introductory text, background material, appropriate literature review, and survey objectives. For literature citations throughout, use format (author date).
+
+The default format for text body is double-spaced between paragraphs and single-space in the body of a paragraph. Do not indent the first line of a paragraph. Text is left-justified.
+
+# Study Area
+
+A description of the study area. Maps or figures are recommended. Include a compass arrow, legend, and scale bar in maps.
+
+
+# Methods
+
+## YAML header
+
+Configure the YAML header including the following elements:
+
+-   *bibliography*: A path to the bibliography file to use for references (BibTeX *.bib* file). The current file includes 3 dummy references; either insert your references into this file or replace the file with your own.
+-   *csl*: The style is provided in the 'the-journal-of-wildlife-management.csl' file, which adopts the [Journal of Wildlife Management](https://wildlife.onlinelibrary.wiley.com/hub/journal/19372817/forauthors.html) reference style. Just leave the file as it is.
+-   *format - docx*: In this template many of the Quarto options for Word output are listed in the YAML header. If you want to know more about these settings I recommend the [MS Word format reference](https://quarto.org/docs/reference/formats/docx.html) for a complete list of available options. For instance, you can adjust the figure and table references with *fig-title*, *tbl-title*, *fig-prefix*, and *tbl-prefix*.
+-   *execute*: Global options for customizing output from executed code are specified within this execute key.
+
+By default, this Quarto template uses a 'akrreport-template.docx' Word template file, which is based on the standard template for the Alaska Refuge Report Series.
+
+If you feel like using your own template or the standard Word template (i.e. the Normal.dot file), simply provide the path to your file or comment/delete this line, respectively.
+
+## Cross-references
+
+External images and R figures can be referenced with `@fig-label`, where 'label' is the name of the code chunk. These label names should not contain underscores to separate words, use hyphens here instead. Note that figures need to have a caption to be numbered and for cross-referencing, The caption is also set in the chunk option with `#| fig-cap: "Your caption"`.
+
+Tables require similarly a label and table caption for cross-referencing. But here, the cross-reference contains the prefix 'tbl': `@tbl-label`.
+
+Cross-references to individual sections can simply be made with the prefix 'sec' and by adding a '{#sec-identifier}' to any heading.
+
+This is for example a cross-reference to @tbl-flex in @sec-tables and a cross-reference to @fig-base in @sec-figures.
+
+To create a reference-able code block, add a #lst-identifier along with a lst-cap attribute inside the curly braces (see code chunk example @lst-codeblock). Note that the indication of the programming language requires for this static code block a dot set before the 'r'.
+
+``` {#lst-codeblock .r lst-cap="Example for a referenceable code block"}
+4+4
+```
+
+## Code blocks
+
+Code blocks in Quarto documents are treated in similar way as in Markdown documents. One important difference is that code chunk options (in Quarto also called 'cell level options') are typically included in special comments using `#|` at the top of code chunks rather than within the line that begins the chunk:
+
+```{r}
+#| eval: false
+summary(cars)
+```
+
+Please note that individual words are separated with a hyphen, not a dot, followed by a colon, not an equal sign as in R Markdown documents. Quarto uses this approach to both better accommodate longer options like `fig-cap`, `fig-subcap`, and `fig-alt` as well as to make it straightforward to edit chunk options within more structured editors that don't have an easy way to edit chunk metadata (e.g. most traditional notebook UIs).
+
+## Mathematical equations
+
+Use mathematics as usual with the dollar sign `$` at the beginning and end of the equation; either in **inline mode** with one dollar sign such as $E = mc^2$ or in **display mode** with two dollar signs: $$E = mc^2$$
+
+Important to note: do not leave a space between the '\$' and your mathematical notation.
+
+Alternatively, you can use LaTeX for more control and when equations are more complicated. LaTeX equations are also automatically numbered if you define a label within the equation environment, which is useful if you have many equations and want to cross-reference them. The equation label needs to be written with '#eq:label' before the end of the equation (see @eq-mean):
+
+$$
+  \bar{X} = \frac{\sum_{i=1}^n X_i}{n}
+$$ {#eq-mean}
+
+Formulas and corresponding explanations should be integrated into the sentence and, thus, end with a comma or period. Here's an example:
+
+If the random variable $Y$ follows a standard normal distribution, i.e. $Y \sim N(0,1)$, it's density function can be described with
+
+$$
+f_{Y}(y)=\varphi(y) \stackrel{\mathrm{def}}{=} \frac{1}{\sqrt{2 \pi}} \exp \left\{ -\frac{y^2}{2} \right\}, \quad y \in \mathbb{R}.
+$$ {#eq-density-norm}
+
+$\pi$ represents the circle number or Ludolph's number. The function
+
+$$
+  F_{Y}(y)=\Phi(y) \stackrel{\mathrm{def}}{=} \int_{-\infty}^y \varphi(x) \,\mathrm{d}x, \quad y \in \mathbb{R}
+$$ {#eq-dist-func} represents then the distribution function of @eq-density-norm.
+
+The numbering of equations, as in @eq-density-norm, should only be done if they are referred to in the rest of the text. If there are many equations in a report, the use of LaTeX makes more sense.
+
+## Field methods
+
+A description of the field methods used to collect data.
+
+## Data analysis
+
+A description of the statistical methods and software used to analyze data. The following is recommended language to recognize R and associated packages used for an analysis:
+
+All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables, was generated using the packages 'bookdown' (version `r packageVersion("bookdown")`) [@R-bookdown], 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'akrreport' (version `r packageVersion("akrreport")`) [@R-akrreport], and 'knitr' (version `r packageVersion("knitr")`) [@R-knitr].
+
+
+# Results
+
+## R output
+
+R output is typically shown in the monospace font (here an example with the `iris` dataset):
+
+```{r}
+summary(iris[,1:3])
+```
+
+## Tables {#sec-tables}
+
+If the output format is Word tables are generated best using R packages instead of R Markdown syntax. The following two sections demonstrate some useful packages.
+
+### Using the *flextable* package
+
+@tbl-flex is an example of using *flextable::regulartable* to generate the table. The function has an explicit argument named 'set_caption' where you can place your caption text.
+
+```{r}
+#| label: tbl-flex
+#| tbl-cap: This is a table.
+
+library(magrittr)
+df <- mtcars[1:5, 1:6]
+
+flextable::regulartable(df) %>%
+  autofit()
+```
+
+## Figures {#sec-figures}
+
+A base graphics scatterplot (@fig-base).
+
+```{r}
+#| label: fig-base
+#| fig-cap: "Relationship between horsepower and fuel economy."
+plot(mtcars$hp, mtcars$mpg,
+xlab = "Gross Horsepower",
+ylab = "Miles Per Gallon",
+pch = 19)
+abline(lm(mpg ~ hp, data = mtcars), col = "red")
+```
+
+Here for comparison is a boxplot with a different image height (@fig-boxplot).
+
+```{r}
+#| label: fig-boxplot
+#| fig-cap: "Fuel differences between transmission types (0 = automatic, 1 = manual)."
+#| fig-height: 3
+#| fig-width: 3
+boxplot(mpg ~ am, mtcars)
+```
+
+
+## Images
+
+Quarto includes several features aimed at making it easier to work with figures and subfigures, as well as for laying out panels that contain multiple figures, tables, or other content.
+
+[![Single image of Iris setosa with URL link but no cross-reference.](images/wikipedia_iris_setosa.jpg)](https://en.wikipedia.org/wiki/Iris_setosa)
+
+For instance, if you have several figures that appear as a group, you can create a figure div to enclose them (see @fig-versicolor and @fig-virginica).
+
+::: {layout-ncol="2" layout-valign="bottom"}
+![Iris versicolor](images/wikipedia_iris_versicolor.jpg){#fig-versicolor}
+
+![Iris virginica](images/wikipedia_iris_virginica.jpg){#fig-virginica}
+:::
+
+The layout attribute enables the creation of much more complex layouts. @fig-custom-layout provides an example with a common figure caption and one identifier for all three.
+
+![Iris setosa](images/wikipedia_iris_setosa.jpg)
+
+![Iris versicolor](images/wikipedia_iris_versicolor.jpg)
+
+![Iris virginica](images/wikipedia_iris_virginica.jpg)
+
+Custom layout of images
+
+
+# Discussion
+
+## Adding citations and bibliography
+
+Link a `.bib` document via the YAML header, and the bibliogaphy will be printed at the very end (as usual). The default bibliography style is provided in the `the-journal-of-wildlife-management.csl` file, which adopts the [Journal of Wildlife Management](https://www.nacwg.org/JWMguidelines2011.pdf) reference style.
+
+References can be cited directly within the document using the R Markdown equivalent of the LaTeX citation system `[@key]`, where key is the citation key in the first line of the entry in the .bib file. Example: \[\@fws2001\]. To cite multiple entries, separate the keys by semicolons (e.g., [@paul2009; @buckland1997]).
+
+If you are using the reference manager [Zotero](https://www.zotero.org/) (**highly recommended**), then Rstudio can [access your reference library directly](https://bookdown.org/pdr_higgins/rmrwr/adding-citations-to-your-rmarkdown.html). Zotero is available through FWS Apps-2-Go. There is also the package [citr](https://github.com/crsh/citr). *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document.
+
+
+# Acknowledgements
+
+Include your appreciation of logistical support, funding sources, field technicians, managers, and others who contributed to the work.
+
+
+# Data availability
+
+All the raw data used in your report should be publicly-accessible, unless legally exempt (e.g., [FOIA-exempt](https://www.fws.gov/program/fws-freedom-information-act-foia)) Recommended boilerplate language for this section could read "The data presented in this report are available at {your data's ServCat URL}".
+
+<!-- Add page break -->
+
+\newpage
+
+
+# References
+
+::: {#refs}
+:::
+
+<!-- All references will be added here automatically. -->

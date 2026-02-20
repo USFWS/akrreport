@@ -2,7 +2,7 @@
 % Please edit documentation in R/pdf_doc.R
 \name{pdf_doc}
 \alias{pdf_doc}
-\title{Convert to report-like PDF/LaTeX document}
+\title{Render a PDF report using R Markdown}
 \usage{
 pdf_doc(..., keep_tex = FALSE)
 }
@@ -20,7 +20,8 @@ output format to pass to \code{\link[bookdown:render_book]{render_book}}
 \description{
 This function serves as wrapper to \code{\link[rmarkdown]{pdf_document}}, with a
 custom Pandoc \LaTeX template and different default values for other arguments
-(e.g., \code{keep_tex = TRUE}) that match the template of the Alaska Refuge Report Series
+(e.g., \code{keep_tex = TRUE}) that match the template of the Alaska Refuge
+Report Series.
 }
 \details{
 Possible arguments for the YAML header are:

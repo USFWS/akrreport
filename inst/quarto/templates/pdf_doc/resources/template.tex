@@ -1,0 +1,284 @@
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\usepackage{setspace}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{titling}
+\usepackage[dvipsnames,table]{xcolor}
+
+% Left justification without hyphenation
+\usepackage[document]{ragged2e}
+\usepackage[none]{hyphenat}
+
+% Customization for better organized Latex tables
+\usepackage{caption}
+\captionsetup[table]{justification=raggedright,singlelinecheck=false,labelfont=bf=bf}
+\captionsetup[figure]{justification=raggedright,singlelinecheck=false,labelfont=bf=bf}
+\usepackage{amssymb}
+\usepackage{array}
+
+% Some bulleted list customization
+\usepackage{enumitem}
+\setlist[enumerate]{before={\interlinepenalty=10000}}
+
+\usepackage{flafter} % Ensure floats appear after they are defined
+\usepackage{placeins} % To set float barrier ahead of references
+%\usepackage[bottom]{footmisc} % Force footnotes to bottom
+\usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+\usepackage[utf8]{inputenc}\usepackage[utf8]{inputenc}
+
+% Change default figure constraints
+\makeatletter
+\setlength\@fptop{0pt}
+\setlength\@fpsep{8pt plus 1fil}
+\setlength\@fpbot{0pt}
+\makeatother
+\makeatletter
+\renewcommand{\fps@figure}{tb}
+\renewcommand{\fps@table}{tb}
+\makeatother
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.7}
+\usepackage{pdflscape}
+
+\usepackage[medium,compact]{titlesec}
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage[linktoc=all]{hyperref}
+$if(colorlinks)$
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+$endif$
+\hypersetup{unicode=true,
+$if(colorlinks)$
+            colorlinks=true,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
+            citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+$else$
+            pdfborder={0 0 0},
+$endif$
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+
+$if(lang)$
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+$if(babel-newcommands)$
+  $babel-newcommands$
+$endif$
+\else
+  \usepackage{polyglossia}
+  \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
+$for(polyglossia-otherlangs)$
+  \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
+$endfor$
+\fi
+$endif$
+
+$if(natbib)$
+\usepackage$if(natbiboptions)$[$for(natbiboptions)$$natbiboptions$$sep$,$endfor$]$endif${natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+\setcitestyle{notesep={; },round,aysep={},yysep={;}}
+$endif$
+$if(biblatex)$
+\usepackage$if(biblio-style)$[style=$biblio-style$]$endif${biblatex}
+$if(biblatexoptions)$\ExecuteBibliographyOptions{$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$}$endif$
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+$endif$
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+\usepackage{longtable,booktabs}
+
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Make links footnotes as well as hotlinks:
+$if(links-as-notes)$
+\usepackage{letltxmacro}
+% Alias href to originalHref to avoid an infinite loop
+\LetLtxMacro{\originalHref}{\href}
+% Make links footnotes in addition to hotlinks:
+\renewcommand{\href}[2]{\originalHref{#1}{#2}\footnote{\url{#1}}}
+$endif$
+
+$if(indent)$
+$else$
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+$endif$
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(numbersections)$
+\setcounter{secnumdepth}{5}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+
+$if(subparagraph)$
+$else$
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+$endif$
+
+$if(dir)$
+\ifxetex
+  % load bidi as late as possible as it modifies e.g. graphicx
+  $if(latex-dir-rtl)$
+  \usepackage[RTLdocument]{bidi}
+  $else$
+  \usepackage{bidi}
+  $endif$
+\fi
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \TeXXeTstate=1
+  \newcommand{\RL}[1]{\beginR #1\endR}
+  \newcommand{\LR}[1]{\beginL #1\endL}
+  \newenvironment{RTL}{\beginR}{\endR}
+  \newenvironment{LTR}{\beginL}{\endL}
+\fi
+$endif$
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+% Add logos above title
+\setlength{\droptitle}{-4em} % Fidgeting to raise logo to top margin
+\renewcommand{\maketitlehooka}{%
+\begin{center}\huge Alaska Refuge Report\end{center}
+\begin{center}\includegraphics[width=4cm]{images/usfws-refuges-logos.png}\end{center}
+\vskip 0.5em}
+
+% Subtitle
+%\renewcommand{\maketitlehookb}{%
+%\begin{center}\LARGE Project Report\end{center}}
+
+$if(report-subject)$
+\title{\Huge $for(report-subject)$$report-subject$$endfor$}
+$endif$
+
+% Author is actually the report Date
+$if(author)$
+\author{\LARGE Refuge Report \\ \\ \LARGE $for(author)$$author$$sep$ \\ $endfor$}
+$endif$
+
+\predate{}\date{}\postdate{}
+
+% Remaining packages required to use kableExtra
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+
+\begin{titlingpage}
+\maketitle
+
+$if(cover-image)$
+$for(cover-image)$
+   \begin{center}
+     \fbox{\includegraphics[width=1.0\linewidth]{$cover-image$}}
+   \end{center}
+$endfor$
+$endif$
+\end{titlingpage}
+
+\newpage
+
+\pagenumbering{roman}
+
+$if(toc)$
+{
+$if(colorlinks)$
+\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+$endif$
+\setcounter{tocdepth}{$toc-depth$}
+\begin{spacing}{0.9}
+\tableofcontents
+\end{spacing}\newpage
+}
+$endif$
+
+$if(lot)$
+\listoftables
+\newpage
+$endif$
+
+$if(lof)$
+\listoffigures
+\newpage
+$endif$
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+$body$
+
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+
+\end{document}
